@@ -3,7 +3,10 @@ import React from 'react';
 class TodoList extends React.Component {
 	render() {
 		return(
-			<li>Hi there!</li>
+			<form onSubmit={this.props.addItem}>
+				<input type="text" placeholder="Buy milk..." />
+				<button type="submit">Add Task</button>
+			</form>
 		);
 	}
 }
