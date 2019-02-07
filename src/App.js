@@ -17,12 +17,13 @@ class App extends Component {
     }
   }
 
+  inputElement = React.createRef();
+
   addItem = (event) => {
     event.preventDefault();
     const newItem = this.state.currentItem;
     if (newItem.text !== '') {  
       const items = [...this.state.items, newItem];
-
       this.setState({
         items: items,
         currentItem: {
@@ -33,8 +34,16 @@ class App extends Component {
     }
   }
 
+  deleteItem = (key) => {
+    const filteredItems = this.state.items.filter(item => {
+      return item.key !== key;
+    });
+    this.setState({
+      items: filteredItems
+    });
+  }
+
   handleInputChange = (event) => {
-    console.log('looks like there is an input change...');
     const itemText = event.target.value;
     const currentItem = {
       text: itemText,
@@ -48,14 +57,19 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <Title />
-        <TodoList 
-          addItem={this.addItem} 
-          inputElement={this.inputElement}
-          handleInputChange={this.handleInputChange}
-          currentItem={this.state.currentItem}
-        />
-        <TodoItems entries={this.state.items}/>
+        <div className="mid-column">
+          <Title />
+          <TodoList 
+            addItem={this.addItem} 
+            inputElement={this.inputElement}
+            handleInputChange={this.handleInputChange}
+            currentItem={this.state.currentItem}
+          />
+          <TodoItems 
+            entries={this.state.items}
+            deleteItem={this.deleteItem} 
+          />
+        </div>
       </div> 
     );
   }
