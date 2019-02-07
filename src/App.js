@@ -6,6 +6,13 @@ import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tasks: []
+    }
+  }
+
   render() {
     return (
       <div className="wrapper">
