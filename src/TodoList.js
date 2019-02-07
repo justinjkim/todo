@@ -13,7 +13,7 @@ class TodoList extends React.Component {
 			>
 				<input 
 					type="text" 
-					placeholder="Buy milk..."
+					placeholder="What do you need to do?"
 					ref={this.props.inputElement}
 					value={this.props.currentItem.text}
 					onChange={this.props.handleInputChange} 
