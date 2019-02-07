@@ -1,6 +1,10 @@
 import React from 'react';
 
 class TodoList extends React.Component {
+	// componentDidUpdate() {
+	// 	this.props.inputElement.current.focus();
+	// }
+	
 	render() {
 		return(
 			<form onSubmit={this.props.addItem}>
