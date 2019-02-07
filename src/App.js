@@ -3,13 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import Title from './Title';
 import TodoList from './TodoList';
-import TodoItem from './TodoItem';
+import TodoItems from './TodoItems';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      tasks: [],
+      items: [],
       currentItem: {
         key: '',
         text: ''
@@ -19,11 +19,30 @@ class App extends Component {
 
   addItem = (event) => {
     event.preventDefault();
-    console.log('added item!');
+    const newItem = this.state.currentItem;
+    if (newItem.text !== '') {  
+      const items = [...this.state.items, newItem];
+
+      this.setState({
+        items: items,
+        currentItem: {
+          key: '',
+          text: ''
+        }
+      });
+    }
   }
 
-  handleInputChange = () => {
+  handleInputChange = (event) => {
     console.log('looks like there is an input change...');
+    const itemText = event.target.value;
+    const currentItem = {
+      text: itemText,
+      key: Date.now()
+    }
+    this.setState({ 
+      currentItem: currentItem
+    })
   }
 
   render() {
@@ -36,6 +55,7 @@ class App extends Component {
           handleInputChange={this.handleInputChange}
           currentItem={this.state.currentItem}
         />
+        <TodoItems entries={this.state.items}/>
       </div> 
     );
   }
