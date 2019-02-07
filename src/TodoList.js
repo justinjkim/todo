@@ -2,7 +2,6 @@ import React from 'react';
 
 class TodoList extends React.Component {
 	componentDidUpdate() {
-		console.log('this.props.inputElement:' + this.props.inputElement);
 		this.props.inputElement.current.focus();
 	}
 
