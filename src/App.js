@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Title from './Title';
 import TodoList from './TodoList';
+import TodoItem from './TodoItem';
 
 class App extends Component {
   constructor() {
@@ -21,7 +22,7 @@ class App extends Component {
     return (
       <div className="wrapper">
         <Title />
-        <TodoList />
+        <TodoList addItem={this.addItem} />
       </div> 
     );
   }
