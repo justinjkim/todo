@@ -9,7 +9,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      tasks: []
+      tasks: [],
+      currentItem: {
+        key: '',
+        text: ''
+      }
     }
   }
 
@@ -18,11 +22,20 @@ class App extends Component {
     console.log('added item!');
   }
 
+  handleInputChange = () => {
+    console.log('looks like there is an input change...');
+  }
+
   render() {
     return (
       <div className="wrapper">
         <Title />
-        <TodoList addItem={this.addItem} />
+        <TodoList 
+          addItem={this.addItem} 
+          inputElement={this.inputElement}
+          handleInputChange={this.handleInputChange}
+          currentItem={this.state.currentItem}
+        />
       </div> 
     );
   }
